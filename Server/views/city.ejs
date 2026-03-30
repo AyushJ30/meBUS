@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>meBus | Add City</title> [cite: 11]
+    <style>
+        body { margin: 0; display: flex; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; }
+        .main-content { flex: 1; padding: 40px; margin-left: 250px; min-height: 100vh; }
+        .form-container { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); max-width: 500px; }
+        h2 { color: #1e293b; margin-top: 0; margin-bottom: 20px; }
+        label { display: block; margin-top: 15px; font-weight: 600; color: #475569; }
+        input, select { width: 100%; padding: 12px; margin-top: 6px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; font-size: 14px; }
+        button { margin-top: 25px; width: 100%; padding: 12px; background-color: #2563eb; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; transition: background 0.2s; }
+        button:hover { background-color: #1d4ed8; }
+    </style>
+</head>
+<body>
+
+    <%- include('partials/sidebar') %>
+
+    <div class="main-content">
+        <div class="form-container">
+            <h2>Append New City</h2>
+            <form action="/admin/city" method="post">
+                
+                <label>Select a Country</label>
+                <select name="CountryID" required> [cite: 11]
+                    <option value="">Select an Option</option> [cite: 11]
+                    <% if (locals.countries) { %> [cite: 11]
+                        <% countries.forEach(country => { %> 
+                            <option value="<%= country.countryId %>"><%= country.countryId %> - <%= country.name %></option> 
+                        <% }) %>
+                    <% } %>
+                </select>
+
+                <label>Select a State</label>
+                <select name="StateID" required> [cite: 13]
+                    <option value="">Select an Option</option> [cite: 13]
+                    <% if (locals.states) { %> [cite: 13]
+                        <% states.forEach(state => { %> 
+                            <option value="<%= state.stateId %>"><%= state.stateId %> - <%= state.name %></option> 
+                        <% }) %>
+                    <% } %>
+                </select>
+
+                <label>Enter City Name:</label>
+                <input
+                    name="Name"
+                    type="text"
+                    placeholder="City Name"
+                    required
+                [cite_start]/>
+
+                <button type="submit">Append City</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

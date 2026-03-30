@@ -1,0 +1,214 @@
+.confirmation-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    min-height: 100vh;
+}
+
+.success-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.success-icon {
+    font-size: 60px;
+    color: #588a58;
+    margin-bottom: 15px;
+}
+
+.success-header h2 {
+    color: #006938;
+    margin: 0 0 10px 0;
+    font-size: 28px;
+}
+
+.success-header p {
+    color: #6c8989;
+    margin: 0;
+}
+
+/* --- The Downloadable Ticket --- */
+.ticket-container {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 700px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    /* Adding a subtle border for the PDF rendering */
+    border: 1px solid #e0e0e0; 
+}
+
+.ticket-header {
+    background-color: rgb(111, 166, 183);
+    color: white;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ticket-header h2 {
+    margin: 0;
+    -webkit-text-stroke: 1px #588a58;
+}
+
+.pnr-badge {
+    background-color: white;
+    color: rgb(111, 166, 183);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.ticket-body {
+    padding: 30px;
+}
+
+.route-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.route-info .city {
+    flex: 1;
+}
+
+.route-info .city h3 {
+    margin: 0 0 5px 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.route-info .city p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.route-info .city:last-child {
+    text-align: right;
+}
+
+.route-arrow {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+    color: #6c8989;
+}
+
+.route-arrow .line {
+    height: 2px;
+    background-color: #6c8989;
+    width: 40px;
+}
+
+.bus-icon-small {
+    margin: 0 10px;
+    font-size: 20px;
+}
+
+.bus-details-row {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.detail-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-box span {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.detail-box strong {
+    font-size: 16px;
+    color: #333;
+}
+
+.passenger-section h3 {
+    color: #006938;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.passenger-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.passenger-table th, .passenger-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.passenger-table th {
+    background-color: #f4f7f6;
+    color: #6c8989;
+    font-weight: bold;
+}
+
+.ticket-footer {
+    background-color: #f4f7f6;
+    text-align: center;
+    padding: 15px;
+    font-size: 12px;
+    color: #888;
+    border-top: 1px dashed #ccc;
+}
+
+/* --- Action Buttons --- */
+.action-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.action-buttons button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.download-btn {
+    background-color: #588a58;
+    color: white;
+}
+
+.download-btn:hover {
+    background-color: #006938;
+}
+
+.home-btn-alt {
+    background-color: rgb(111, 166, 183);
+    color: white;
+}
+
+.home-btn-alt:hover {
+    background-color: #6c8989;
+}

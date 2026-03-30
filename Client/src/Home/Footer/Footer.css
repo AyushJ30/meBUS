@@ -1,0 +1,113 @@
+.site-footer {
+    /* Matches your home header background */
+    background-color: rgb(111, 166, 183); 
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    /* Pulls the footer flush to the edges if the parent container has padding */
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-bottom: -10px;
+    margin-top: 50px;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 40px 50px;
+    gap: 30px;
+}
+
+/* Brand Section */
+.footer-brand {
+    max-width: 350px;
+}
+
+.footer-logo {
+    font-size: 35px;
+    margin: 0;
+    cursor: pointer;
+    -webkit-text-stroke: 1px #588a58;
+}
+
+.footer-icon {
+    color: white;
+}
+
+.footer-slogan {
+    font-size: 18px;
+    font-weight: bold;
+    color: #006938; /* Pulling your dark green */
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.footer-desc {
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* Links Section */
+.footer-links h3, .footer-contact h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #006938; 
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    font-size: 16px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-links li:hover {
+    color: #006938;
+    transform: translateX(5px); /* Adds a nice little slide effect on hover */
+}
+
+/* Contact Section */
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+.contact-icon {
+    font-size: 18px;
+    margin-right: 15px;
+    color: #006938;
+}
+
+.contact-item p {
+    margin: 0;
+}
+
+/* Bottom Copyright Bar */
+.footer-bottom {
+    background-color: #6c8989; /* Pulling your teal color for contrast */
+    text-align: center;
+    padding: 15px 0;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 14px;
+}

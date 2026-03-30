@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>meBus | Edit Bus</title> 
+    <style>
+        body { margin: 0; display: flex; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; }
+        .main-content { flex: 1; padding: 40px; margin-left: 250px; min-height: 100vh; } 
+        
+        .form-container { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); max-width: 700px; }
+        h2 { margin-top: 0; color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 25px; }
+        
+        label { display: block; margin-top: 20px; font-weight: 600; color: #475569; font-size: 14px; }
+        
+        input[type="text"], input[type="number"], input[type="time"], select { 
+            width: 100%; padding: 12px; margin-top: 8px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; font-family: inherit; font-size: 15px;
+        }
+        
+        input:focus, select:focus { outline: none; border-color: #2563eb; ring: 2px solid #bfdbfe; }
+
+        .flex-row { display: flex; gap: 20px; }
+        .flex-item { flex: 1; }
+        
+        /* Checkbox Grid */
+        .days-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 12px; 
+            margin-top: 10px; 
+            background: #f1f5f9; 
+            padding: 20px; 
+            border-radius: 8px; 
+            border: 1px solid #e2e8f0;
+        }
+        .checkbox-label { display: flex; align-items: center; font-weight: normal; cursor: pointer; color: #1e293b; font-size: 14px; }
+        input[type="checkbox"] { width: 18px; height: 18px; margin-right: 10px; cursor: pointer; }
+        
+        .btn-group { margin-top: 30px; display: flex; gap: 15px; }
+        .save-btn { flex: 2; padding: 14px; background-color: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 16px; transition: background 0.2s; }
+        .save-btn:hover { background-color: #1d4ed8; }
+        
+        .cancel-btn { flex: 1; padding: 14px; background-color: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; border-radius: 6px; text-decoration: none; text-align: center; font-weight: 600; font-size: 16px; }
+        .cancel-btn:hover { background-color: #e2e8f0; }
+
+        .header-flex { display: flex; justify-content: space-between; align-items: center; max-width: 700px; margin-bottom: 20px; }
+        .back-link { text-decoration: none; color: #64748b; font-size: 14px; font-weight: 500; }
+        .back-link:hover { color: #0f172a; text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <%- include('partials/sidebar') %>
+
+    <div class="main-content">
+        <div class="header-flex">
+            <a href="/admin/tables" class="back-link">&larr; Back to Tables</a>
+        </div>
+
+        <div class="form-container">
+            <h2>Edit Bus: <%= bus.name %></h2>
+            
+            <form action="/admin/bus-edit/<%= bus.id %>" method="POST">
+
+
+                <div class="flex-row">
+                    <div class="flex-item">
+                        <label>Origin</label>
+                        <select name="Origin" required>
+                            <% cities.forEach(city => { %>
+                                <option value="<%= city.name %>" <%= bus.origin === city.name ? 'selected' : '' %>><%= city.name %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <div class="flex-item">
+                        <label>Destination</label>
+                        <select name="Destination" required>
+                            <% cities.forEach(city => { %>
+                                <option value="<%= city.name %>" <%= bus.destination === city.name ? 'selected' : '' %>><%= city.name %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex-row">
+                    <div class="flex-item">
+                        <label>Fare (Base)</label>
+                        <input name="Fare" type="number" value="<%= bus.fare %>" required />
+                    </div>
+                    <div class="flex-item">
+                        <label>Final Price</label>
+                        <input name="Price" type="number" value="<%= bus.finalPrice %>" required />
+                    </div>
+                </div>
+
+                <label>Total Seats</label>
+                <input name="Seats" type="number" value="<%= bus.totalSeats %>" required />
+
+                <div class="flex-row">
+                    <div class="flex-item">
+                        <label>Departure Time</label>
+                        <input name="Start" type="time" step="1" value="<%= bus.start %>" required />
+                    </div>
+                    <div class="flex-item">
+                        <label>Duration (HH:mm)</label>
+                        <input name="Duration" type="time" step="1" value="<%= bus.duration %>" required />
+                    </div>
+                </div>
+
+                <label>Running Schedule</label>
+                <div class="days-grid">
+                    <% const s = bus.schedule || {}; %>
+                    <label class="checkbox-label"><input type="checkbox" name="Days" value="sun" <%= s.sun ? 'checked' : '' %>> Sun</label>
+                    <label class="checkbox-label"><input type="checkbox" name="Days" value="mon" <%= s.mon ? 'checked' : '' %>> Mon</label>
+                    <label class="checkbox-label"><input type="checkbox" name="Days" value="tue" <%= s.tue ? 'checked' : '' %>> Tue</label>
+                    <label class="checkbox-label"><input type="checkbox" name="Days" value="wed" <%= s.wed ? 'checked' : '' %>> Wed</label>
+                    <label class="checkbox-label"><input type="checkbox" name="Days" value="thu" <%= s.thu ? 'checked' : '' %>> Thu</label>
+                    <label class="checkbox-label"><input type="checkbox" name="Days" value="fri" <%= s.fri ? 'checked' : '' %>> Fri</label>
+                    <label class="checkbox-label"><input type="checkbox" name="Days" value="sat" <%= s.sat ? 'checked' : '' %>> Sat</label>
+                </div>
+
+                <div class="btn-group">
+                    <a href="/admin/tables" class="cancel-btn">Cancel</a>
+                    <button type="submit" class="save-btn">Update Bus Details</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

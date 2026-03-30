@@ -1,0 +1,74 @@
+.pnr-search-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    background-color: #f4f7f6;
+    min-height: 100vh;
+}
+
+.search-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.search-section h2 {
+    color: #006938;
+}
+
+.pnr-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.search-input-wrapper {
+    position: relative;
+}
+
+.search-input-wrapper input {
+    padding: 12px 15px 12px 40px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.input-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+.search-btn {
+    background-color: #588a58;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.error-msg {
+    color: #d84e55;
+    margin-top: 10px;
+}
+
+.ticket-display-area {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.action-buttons-center {
+    margin-top: 20px;
+}
+
+.search-container{
+    flex: 1;
+    padding: 10px;
+}

@@ -1,0 +1,301 @@
+/* PassengerInfo.css */
+
+.passenger-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Matched Home.css */
+    max-width: 650px; 
+    margin: 20px auto;
+    color: #3e3e52;
+}
+
+/* --- Card Base Styling --- */
+.card-box {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 2px 5px rgb(198, 198, 198); /* Matched Home.css shadow */
+    border: 1px solid rgb(198, 198, 198); /* Matched Home.css border */
+    margin-bottom: 24px;
+    padding: 24px;
+}
+
+.card-header {
+    margin-bottom: 20px;
+}
+
+.card-header h3 {
+    margin: 0 0 4px 0;
+    font-size: 18px;
+    color: #006938; /* Matched Dark Green */
+}
+
+.card-header p {
+    margin: 0;
+    font-size: 13px;
+    color: #6c8989; /* Matched Muted Teal */
+}
+
+/* --- Form Inputs --- */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+}
+
+.input-group label {
+    font-size: 12px;
+    color: #6c8989; /* Matched Muted Teal */
+    margin-bottom: 6px;
+    margin-left: 2px;
+    font-weight: bold;
+}
+
+.input-group input[type="text"],
+.input-group input[type="number"],
+.input-group input[type="email"] {
+    padding: 14px 16px;
+    border: 1px solid rgb(158, 158, 158);
+    border-radius: 8px;
+    font-size: 15px;
+    color: #1a1a1a;
+    transition: border-color 0.2s;
+    outline: none;
+}
+
+.input-group input:focus {
+    border-color: #588a58; /* Focus state matched to Accent Green */
+}
+
+/* Hide up/down arrows on number inputs */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* --- Passenger Specifics --- */
+.passenger-entry {
+    border-top: 1px solid rgb(198, 198, 198);
+    padding-top: 20px;
+    margin-top: 10px;
+}
+
+.passenger-entry:first-of-type {
+    border-top: none;
+    padding-top: 0;
+}
+
+.passenger-seat-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.avatar-icon {
+    width: 36px;
+    height: 36px;
+    background-color: rgba(111, 166, 183, 0.2); /* Soft Primary Light Teal */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #006938; /* Matched Dark Green */
+}
+
+.avatar-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.seat-title h4 {
+    margin: 0;
+    font-size: 15px;
+    color: #1a1a1a;
+}
+
+.seat-title span {
+    font-size: 13px;
+    color: #6c8989;
+}
+
+/* --- Gender Pills --- */
+.gender-container {
+    display: flex;
+    gap: 16px;
+}
+
+.gender-pill {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border: 1px solid rgb(158, 158, 158);
+    border-radius: 24px; /* Pill shape */
+    cursor: pointer;
+    font-size: 14px;
+    color: #1a1a1a;
+    transition: all 0.2s ease;
+}
+
+.gender-pill.selected {
+    border-color: #006938; /* Matched Dark Green */
+    background-color: rgba(0, 105, 56, 0.1); /* Soft green fill */
+}
+
+.gender-pill input[type="radio"] {
+    display: none;
+}
+
+/* --- Custom Radios (For Gender Pills & Option Lists) --- */
+.custom-radio {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgb(158, 158, 158);
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+input[type="radio"]:checked + .custom-radio {
+    border-color: #006938; /* Matched Dark Green */
+}
+
+input[type="radio"]:checked + .custom-radio::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: #006938; /* Matched Dark Green */
+    border-radius: 50%;
+}
+
+/* --- Option Lists (Cancellation & Insurance) --- */
+.option-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.option-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border: 1px solid rgb(198, 198, 198);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.option-row:hover {
+    background-color: rgba(88, 138, 88, 0.05); /* Light green hover */
+}
+
+.option-row.selected {
+    border-color: #006938; /* Matched Dark Green */
+    background-color: rgba(0, 105, 56, 0.1); /* Soft green fill */
+}
+
+.option-row input[type="radio"] {
+    display: none;
+}
+
+.option-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.option-main {
+    font-size: 14px;
+    color: #1a1a1a;
+    transition: color 0.2s ease;
+}
+
+.option-row.selected .option-main {
+    color: #006938; /* Highlight main text when selected */
+    font-weight: bold;
+}
+
+.option-sub {
+    font-size: 12px;
+    color: #6c8989; /* Matched Muted Teal */
+    margin-top: 4px;
+}
+
+/* --- Insurance Specific Tweaks --- */
+.insurance-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.badge {
+    background-color: rgba(111, 166, 183, 0.2); /* Soft Primary Light Teal */
+    color: #006938; /* Matched Dark Green */
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.insurance-desc {
+    background-color: #ffffff;
+    border: 1px dashed rgb(158, 158, 158); /* Subtle dashed border */
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.insurance-desc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.insurance-desc li {
+    font-size: 13px;
+    color: #3e3e52;
+    margin-bottom: 8px;
+}
+
+.insurance-desc li:last-child {
+    margin-bottom: 0;
+}
+
+.insurance-desc li strong {
+    color: #588a58; /* Matched Accent Green */
+    display: inline-block;
+    width: 90px;
+}
+
+/* --- Proceed Button --- */
+.btn-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px; 
+}
+
+.proceed-btn {
+    padding: 14px 32px;
+    background-color: #6c8989; /* Matched to Muted Teal */
+    color: white;
+    border: none;
+    border-radius: 20px; /* Matched to Home.css button radius */
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+    letter-spacing: 0.3px;
+    width: 100%; /* Makes button full width to match container */
+}
+
+.proceed-btn:hover {
+    background-color: #588a58; /* Matched to Accent Green hover */
+}

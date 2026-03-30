@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>meBus | Add Country</title>
+    <style>
+        body { margin: 0; display: flex; font-family: 'Segoe UI', sans-serif; background-color: #f8fafc; }
+        .main-content { flex: 1; padding: 40px; margin-left: 250px; min-height: 100vh; }
+        .form-card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); max-width: 450px; }
+        h2 { color: #1e293b; margin-top: 0; margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #475569; }
+        input { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; margin-bottom: 20px; }
+        button { width: 100%; padding: 12px; background-color: #2563eb; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
+        button:hover { background-color: #1d4ed8; }
+    </style>
+</head>
+<body>
+
+    <%- include('partials/sidebar') %>
+
+    <div class="main-content">
+        <div class="form-card">
+            <h2>Add New Country</h2>
+            <form action="/admin/country" method="post">
+                <label>Enter Country Name: </label>
+                <input
+                    name="Name"
+                    type="text"
+                    placeholder="Country"
+                    required
+                />
+
+                <button type="submit">Append Country</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

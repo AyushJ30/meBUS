@@ -1,0 +1,130 @@
+.login-container{
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-image: url('../assets/signup-background.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.login-form{
+
+    border-radius: 20px;
+    
+    box-shadow: 0px 0px 5px black;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    background-color: rgba(255, 255, 255, 0);
+
+    backdrop-filter: blur(3px);
+
+    color: white;
+
+    padding: 50px;
+
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.input-field{
+    border: none;
+    margin: 0px 10px;
+
+    font-size: 20px;
+
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+}
+
+.login-icons{
+    border-bottom: 1px solid white;
+
+    margin-bottom: 20px;
+    margin-top: 10px;
+
+    padding: 10px;
+}
+
+.icon{
+    font-size: 20px;
+}
+
+.input-field:focus{
+    border: none;
+    outline: none;
+}
+
+.login-head{
+    width: 100%;
+    text-align: center;
+
+    margin-bottom: 30px;
+
+}
+
+.login-form > label{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.login-btn{
+    background-color: rgb(111, 166, 183);
+
+    font-size: 20px;
+
+    padding: 8px 0px;
+
+    border-radius: 40px;
+    border: none;
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: background-color 0.5s ease;
+}
+
+.login-btn:hover{
+    background-color: rgb(94, 154, 172);
+}
+
+.login-err{
+    margin-bottom: 20px;
+
+    font-size: 17px;
+    color: red;
+}
+
+.login-err > span{
+    font-weight: bold;
+}
+
+.signup{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.signup > p {
+    margin-bottom: 10px;
+    color: black;
+}
+
+.signup > button{
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+
+    font-size: 17px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.signup > button:hover{
+    color: grey;
+}

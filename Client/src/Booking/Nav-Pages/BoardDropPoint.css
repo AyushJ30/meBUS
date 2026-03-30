@@ -1,0 +1,161 @@
+/* BoardDropPoint.css */
+
+.point-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Matched Home.css */
+    max-width: 900px;
+    margin: 20px auto;
+    color: #3e3e52;
+}
+
+/* Flexbox to put the two cards side-by-side */
+.point-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+/* Card Styling */
+.board-container, .drop-container {
+    flex: 1;
+    min-width: 320px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 2px 5px rgb(198, 198, 198); /* Matched Home.css shadow */
+    overflow: hidden;
+    border: 1px solid rgb(198, 198, 198); /* Matched Home.css border */
+}
+
+.point-head {
+    padding: 20px 24px;
+    border-bottom: 1px solid rgb(158, 158, 158); /* Matched Home.css border */
+    background-color: #ffffff;
+}
+
+.point-head h3 {
+    margin: 0 0 5px 0;
+    font-size: 18px;
+    color: #006938; /* Matched Dark Green */
+}
+
+.point-head p {
+    margin: 0;
+    font-size: 13px;
+    color: #6c8989; /* Matched Muted Teal */
+}
+
+/* Individual Row Items */
+.point-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid rgb(198, 198, 198);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.point-row:last-child {
+    border-bottom: none;
+}
+
+.point-row:hover {
+    background-color: rgba(88, 138, 88, 0.05); /* Very light green hover */
+}
+
+/* The magic selected state */
+.point-row.selected {
+    background-color: rgba(0, 105, 56, 0.1); /* Soft green tint matching selected seats */
+}
+
+.point-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.point-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.point-main {
+    font-weight: 600;
+    font-size: 14px;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+    transition: color 0.2s ease;
+}
+
+.point-row.selected .point-main {
+    color: #006938; /* Highlight main text in Dark Green when selected */
+}
+
+.point-sub {
+    font-size: 12px;
+    color: #6c8989; /* Matched Muted Teal */
+}
+
+/* --- Custom Radio Buttons --- */
+.radio-wrapper input[type="radio"] {
+    display: none; /* Hide default browser radio */
+}
+
+.custom-radio {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgb(158, 158, 158);
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+/* Outline turns dark green when checked */
+input[type="radio"]:checked + .custom-radio {
+    border-color: #006938;
+}
+
+/* Inner dark green circle appears when checked */
+input[type="radio"]:checked + .custom-radio::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: #006938; /* Matched Dark Green */
+    border-radius: 50%;
+}
+
+/* --- Action Button --- */
+.btn-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.proceed-btn {
+    padding: 10px 35px;
+    background-color: #6c8989; /* Matched to Muted Teal */
+    color: white;
+    border: none;
+    border-radius: 20px; /* Matched to Home.css button radius */
+    font-size: 18px; 
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+    letter-spacing: 0.3px;
+}
+
+.proceed-btn:hover:not(:disabled) {
+    background-color: #588a58; /* Matched to Accent Green hover */
+}
+
+.proceed-btn:disabled {
+    background-color: rgb(198, 198, 198);
+    color: #ffffff;
+    cursor: not-allowed;
+}

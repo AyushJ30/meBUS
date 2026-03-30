@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>meBus | Data Tables</title>
+    <style>
+        body { margin: 0; display: flex; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; }
+        .main-content { flex: 1; padding: 40px; margin-left: 250px; min-height: 100vh; overflow-y: auto; }
+        .table-container { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); margin-bottom: 40px; overflow-x: auto; }
+        h2 { color: #1e293b; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px; }
+        
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #e2e8f0; font-size: 14px; }
+        th { background-color: #f1f5f9; color: #475569; font-weight: 600; }
+        tr:hover { background-color: #f8fafc; }
+        
+        .status-badge { padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: bold; }
+        .status-active { background-color: #dcfce3; color: #166534; }
+        .status-inactive { background-color: #fee2e2; color: #991b1b; }
+        
+        .toggle-btn { padding: 6px 12px; background-color: #475569; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; transition: background 0.2s; }
+        .toggle-btn:hover { background-color: #334155; }
+
+        /* Pagination Styles */
+        .pagination { display: flex; justify-content: flex-end; align-items: center; margin-top: 20px; gap: 15px; font-size: 14px; }
+        .page-info { color: #475569; font-weight: 500; }
+        .pagination-controls { display: flex; gap: 8px; }
+        .page-link { padding: 6px 12px; background: white; border: 1px solid #cbd5e1; border-radius: 4px; color: #2563eb; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+        .page-link:hover:not(.disabled) { background-color: #f1f5f9; }
+        .page-link.disabled { color: #94a3b8; border-color: #e2e8f0; cursor: not-allowed; background-color: #f8fafc; }
+
+        .edit-btn {
+            padding: 6px 12px;
+            background-color: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 12px;
+            display: inline-block;
+            transition: background 0.2s;
+        }
+        .edit-btn:hover {
+            background-color: #1d4ed8;
+        }
+
+        .add-btn-main {
+            padding: 8px 16px;
+            background-color: #10b981; /* Green */
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .add-btn-main:hover { background-color: #059669; }
+    </style>
+</head>
+<body>
+
+    <%- include('partials/sidebar') %>
+
+    <div class="main-content">
+        <h1 style="color: #0f172a; margin-bottom: 30px;">System Data Overview</h1>
+
+        <div class="table-container">
+            <h2>Buses</h2> 
+            <a href="/admin/bus" class="add-btn-main">+ Add New Bus</a>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th><th>Name</th><th>Origin</th><th>Destination</th>
+                        <th>Start</th><th>Duration</th><th>Schedule</th><th>Seats</th><th>Status</th><th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="bus-body">
+                    <% if (locals.buses && buses.length > 0) { %>
+                        <% buses.forEach(bus => { %>
+                            <tr class="paginated-row"> 
+                                <td><%= bus.id %></td>
+                                <td><%= bus.name %></td>
+                                <td><%= bus.origin %></td>
+                                <td><%= bus.destination %></td>
+                                <td><%= bus.start %></td>
+                                <td><%= bus.duration %></td>
+                                <td style="font-family: monospace; letter-spacing: 2px; font-size: 12px;">
+                                    <% if (bus.schedule) { %>
+                                        <span style="<%= bus.schedule.sun ? 'color: #10b981; font-weight: bold;' : 'color: #cbd5e1;' %>">S</span>
+                                        <span style="<%= bus.schedule.mon ? 'color: #10b981; font-weight: bold;' : 'color: #cbd5e1;' %>">M</span>
+                                        <span style="<%= bus.schedule.tue ? 'color: #10b981; font-weight: bold;' : 'color: #cbd5e1;' %>">T</span>
+                                        <span style="<%= bus.schedule.wed ? 'color: #10b981; font-weight: bold;' : 'color: #cbd5e1;' %>">W</span>
+                                        <span style="<%= bus.schedule.thu ? 'color: #10b981; font-weight: bold;' : 'color: #cbd5e1;' %>">T</span>
+                                        <span style="<%= bus.schedule.fri ? 'color: #10b981; font-weight: bold;' : 'color: #cbd5e1;' %>">F</span>
+                                        <span style="<%= bus.schedule.sat ? 'color: #10b981; font-weight: bold;' : 'color: #cbd5e1;' %>">S</span>
+                                    <% } %>
+                                </td>
+                                <td><%= bus.totalSeats %></td>
+                                <td><span class="status-badge <%= bus.status === 0 ? 'status-inactive' : 'status-active' %>"><%= bus.status === 0 ? 'Inactive' : 'Active' %></span></td>
+                                <td class="action-cell">
+                                    <form style="margin: 0;" onsubmit="handleToggle(event, '/admin/bus/<%= bus.id %>')">
+                                        <button type="submit" class="toggle-btn">Toggle</button>
+                                    </form>
+                                    <a href="/admin/bus/<%= bus.id %>" class="edit-btn">Edit</a>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    <% } else { %>
+                        <tr><td colspan="10" style="text-align: center;">No buses found.</td></tr>
+                    <% } %>
+                </tbody>
+            </table>
+            <div id="bus-pagination" class="pagination"></div>
+        </div>
+
+        <div class="table-container">
+            <h2>Boarding & Dropping Points</h2>
+            <a href="/admin/point" class="add-btn-main">+ Add New Point</a>
+            <table>
+                <thead>
+                    <tr><th>ID</th><th>City</th><th>Landmark</th><th>Type</th><th>Status</th><th>Action</th></tr>
+                </thead>
+                <tbody id="point-body">
+                    <% if (locals.points && points.length > 0) { %>
+                        <% points.forEach(point => { %>
+                            <tr class="paginated-row">
+                                <td><%= point.id %></td>
+                                <td><%= point.cityName %></td>
+                                <td><%= point.point %></td>
+                                <td><%= point.type %></td>
+                                <td><span class="status-badge <%= point.status === 0 ? 'status-inactive' : 'status-active' %>"><%= point.status === 0 ? 'Inactive' : 'Active' %></span></td>
+                                <td>
+                                    <form style="margin: 0;" onsubmit="handleToggle(event, '/admin/point/<%= point.id %>')">
+                                        <button type="submit" class="toggle-btn">Toggle</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    <% } else { %>
+                        <tr><td colspan="6" style="text-align: center;">No points found.</td></tr>
+                    <% } %>
+                </tbody>
+            </table>
+            <div id="point-pagination" class="pagination"></div>
+        </div>
+
+        <div class="table-container">
+            <h2>Cities</h2>
+            <a href="/admin/city" class="add-btn-main">+ Add New City</a>
+            <table>
+                <thead>
+                    <tr><th>ID</th><th>City Name</th><th>State ID</th><th>Status</th><th>Action</th></tr>
+                </thead>
+                <tbody id="city-body">
+                    <% if (locals.cities && cities.length > 0) { %>
+                        <% cities.forEach(city => { %>
+                            <tr class="paginated-row">
+                                <td><%= city.id %></td>
+                                <td><%= city.name %></td>
+                                <td><%= city.stateId %></td>
+                                <td><span class="status-badge <%= city.status === 0 ? 'status-inactive' : 'status-active' %>"><%= city.status === 0 ? 'Inactive' : 'Active' %></span></td>
+                                <td>
+                                    <form style="margin: 0;" onsubmit="handleToggle(event, '/admin/city/<%= city.id %>')">
+                                        <button type="submit" class="toggle-btn">Toggle</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    <% } else { %>
+                        <tr><td colspan="5" style="text-align: center;">No cities found.</td></tr>
+                    <% } %>
+                </tbody>
+            </table>
+            <div id="city-pagination" class="pagination"></div>
+        </div>
+
+        <div class="table-container">
+            <h2>States</h2>
+            <a href="/admin/state" class="add-btn-main">+ Add New State</a>
+            <table>
+                <thead>
+                    <tr><th>ID</th><th>State Name</th><th>Country ID</th><th>Status</th><th>Action</th></tr>
+                </thead>
+                <tbody id="state-body">
+                    <% if (locals.states && states.length > 0) { %>
+                        <% states.forEach(state => { %>
+                            <tr class="paginated-row">
+                                <td><%= state.id %></td>
+                                <td><%= state.name %></td>
+                                <td><%= state.countryId %></td>
+                                <td><span class="status-badge <%= state.status === 0 ? 'status-inactive' : 'status-active' %>"><%= state.status === 0 ? 'Inactive' : 'Active' %></span></td>
+                                <td>
+                                    <form style="margin: 0;" onsubmit="handleToggle(event, '/admin/state/<%= state.id %>')">
+                                        <button type="submit" class="toggle-btn">Toggle</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    <% } else { %>
+                        <tr><td colspan="5" style="text-align: center;">No states found.</td></tr>
+                    <% } %>
+                </tbody>
+            </table>
+            <div id="state-pagination" class="pagination"></div>
+        </div>
+
+        <div class="table-container">
+            <h2>Countries</h2>
+            <a href="/admin/country" class="add-btn-main">+ Add New Country</a>
+            <table>
+                <thead>
+                    <tr><th>ID</th><th>Country Name</th><th>Status</th><th>Action</th></tr>
+                </thead>
+                <tbody id="country-body">
+                    <% if (locals.countries && countries.length > 0) { %>
+                        <% countries.forEach(country => { %>
+                            <tr class="paginated-row">
+                                <td><%= country.id %></td>
+                                <td><%= country.name %></td>
+                                <td><span class="status-badge <%= country.status === 0 ? 'status-inactive' : 'status-active' %>"><%= country.status === 0 ? 'Inactive' : 'Active' %></span></td>
+                                <td>
+                                    <form style="margin: 0;" onsubmit="handleToggle(event, '/admin/country/<%= country.id %>')">
+                                        <button type="submit" class="toggle-btn">Toggle</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    <% } else { %>
+                        <tr><td colspan="4" style="text-align: center;">No countries found.</td></tr>
+                    <% } %>
+                </tbody>
+            </table>
+            <div id="country-pagination" class="pagination"></div>
+        </div>
+
+        <script>
+            // --- Toggle Logic ---
+            async function handleToggle(event, url) {
+                event.preventDefault();
+                const form = event.target;
+                const button = form.querySelector('button');
+                const row = form.closest('tr');
+                const badge = row.querySelector('.status-badge');
+
+                const originalText = button.innerText;
+                button.innerText = '...';
+                button.disabled = true;
+
+                try {
+                    const response = await fetch(url, {
+                        method: 'PATCH',
+                        headers: { 'Content-Type': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        if (badge.classList.contains('status-active')) {
+                            badge.classList.remove('status-active');
+                            badge.classList.add('status-inactive');
+                            badge.innerText = 'Inactive';
+                        } else {
+                            badge.classList.remove('status-inactive');
+                            badge.classList.add('status-active');
+                            badge.innerText = 'Active';
+                        }
+                    } else {
+                        alert('Failed to update status on the server.');
+                    }
+                } catch (error) {
+                    console.error('Network error:', error);
+                    alert('A network error occurred.');
+                } finally {
+                    button.innerText = originalText;
+                    button.disabled = false;
+                }
+            }
+
+            // --- Pagination Engine ---
+            document.addEventListener('DOMContentLoaded', () => {
+                // Initialize all 5 tables to show 10 rows per page
+                setupPagination('bus-body', 'bus-pagination', 10);
+                setupPagination('point-body', 'point-pagination', 10);
+                setupPagination('city-body', 'city-pagination', 10);
+                setupPagination('state-body', 'state-pagination', 10);
+                setupPagination('country-body', 'country-pagination', 10);
+            });
+
+            window.paginationStates = {};
+
+            function setupPagination(tbodyId, paginationId, rowsPerPage) {
+                const tbody = document.getElementById(tbodyId);
+                if (!tbody) return;
+                
+                const rows = Array.from(tbody.querySelectorAll('tr.paginated-row'));
+                if (rows.length === 0) return; // Hide pagination if empty
+
+                const totalPages = Math.ceil(rows.length / rowsPerPage);
+                const paginationContainer = document.getElementById(paginationId);
+
+                function renderTable(page) {
+                    const start = (page - 1) * rowsPerPage;
+                    const end = start + rowsPerPage;
+                    
+                    rows.forEach((row, index) => {
+                        row.style.display = (index >= start && index < end) ? '' : 'none';
+                    });
+                    
+                    renderControls(page);
+                }
+
+                function renderControls(page) {
+                    // Only show buttons if there is more than 1 page
+                    if (totalPages <= 1) {
+                        paginationContainer.innerHTML = '';
+                        return;
+                    }
+
+                    paginationContainer.innerHTML = `
+                        <span class="page-info">Page ${page} of ${totalPages}</span>
+                        <div class="pagination-controls">
+                            <button class="page-link ${page === 1 ? 'disabled' : ''}" 
+                                    onclick="changePage('${tbodyId}', ${page - 1})"
+                                    ${page === 1 ? 'disabled' : ''}>Previous</button>
+                            <button class="page-link ${page === totalPages ? 'disabled' : ''}" 
+                                    onclick="changePage('${tbodyId}', ${page + 1})"
+                                    ${page === totalPages ? 'disabled' : ''}>Next</button>
+                        </div>
+                    `;
+                }
+
+                window.paginationStates[tbodyId] = { page: 1, total: totalPages, render: renderTable };
+                renderTable(1); // Load the first page initially
+            }
+
+            function changePage(tbodyId, newPage) {
+                const state = window.paginationStates[tbodyId];
+                if (newPage >= 1 && newPage <= state.total) {
+                    state.page = newPage;
+                    state.render(newPage);
+                }
+            }
+        </script>
+
+    </div>
+</body>
+</html>

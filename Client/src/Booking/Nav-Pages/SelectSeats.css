@@ -1,0 +1,183 @@
+/* SelectSeats.css */
+
+.select-seats-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Matched Home.css */
+    max-width: 900px;
+    margin: 20px auto;
+    color: #3e3e52;
+}
+
+.select-seats-container h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #6c8989; /* Matched to Muted Teal */
+}
+
+/* --- Top Info Bar --- */
+.bus-info-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    font-size: 14px;
+    border: 1px solid rgb(198, 198, 198); /* Matched Home.css shadow/border color */
+}
+
+.bus-info-bar span {
+    color: #6c8989; /* Matched to Muted Teal */
+}
+
+.bus-info-bar span strong {
+    color: #006938; /* Matched to Dark Green */
+}
+
+/* --- Seat Selection Wrapper --- */
+.seat-grid-wrapper {
+    width: max-content;
+    padding: 30px 45px;
+    background-color: #ffffff;
+    border: 1px solid rgb(198, 198, 198);
+    border-radius: 12px;
+    margin: 0 auto;
+    box-shadow: 0px 2px 5px rgb(198, 198, 198); /* Matched Home.css form shadow */
+}
+
+/* --- Driver Cabin (Steering Wheel) --- */
+.driver-cabin {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #6c8989;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(158, 158, 158); /* Matched Home.css border */
+}
+
+/* Creating an SVG steering wheel icon via CSS */
+.driver-cabin::after {
+    content: '';
+    width: 24px;
+    height: 24px;
+    /* Updated SVG stroke color to match #6c8989 */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236c8989' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 2v10'/%3E%3Cpath d='M4.93 4.93l7.07 7.07'/%3E%3Cpath d='M19.07 4.93l-7.07 7.07'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* --- The Seat Grid Layout --- */
+.seat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 38px);
+    gap: 16px 12px; /* row-gap column-gap */
+    justify-content: center;
+}
+
+/* Create the center aisle by adding a right margin to the 2nd seat of every row */
+.seat:nth-child(4n - 2) {
+    margin-right: 40px;
+}
+
+/* --- Individual Seat Styling --- */
+.seat {
+    width: 38px;
+    height: 52px;
+    box-sizing: border-box;
+    background-color: transparent;
+    border: 1.5px solid currentColor; /* Automatically matches the text color */
+    border-radius: 6px 6px 3px 3px;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end; /* Pushes the seat number to the bottom */
+    justify-content: center;
+    padding-bottom: 5px;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+/* The inner line to simulate the seat headrest */
+.seat::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    right: 3px;
+    height: 12px;
+    border: 1.5px solid currentColor;
+    border-radius: 3px;
+}
+
+/* --- Seat States --- */
+.seat-available {
+    color: #588a58; /* Matched to Accent Green */
+}
+
+.seat-available:hover {
+    background-color: rgba(88, 138, 88, 0.1); /* Light transparent green hover */
+}
+
+.seat-booked {
+    color: rgb(198, 198, 198);
+    background-color: #fbfbfb;
+    cursor: not-allowed;
+}
+
+.seat-selected {
+    color: #006938; /* Matched to Dark Green */
+    background-color: rgba(0, 105, 56, 0.1); /* Soft green fill */
+    border-width: 2px;
+}
+
+.seat-selected::before {
+    border-width: 2px;
+}
+
+/* --- Bottom Summary & Action --- */
+.seat-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgb(158, 158, 158);
+}
+
+.seat-summary p {
+    margin: 4px 0;
+    font-size: 15px;
+    color: #6c8989;
+}
+
+.seat-summary p strong {
+    color: #006938;
+}
+
+.proceed-btn {
+    margin-top: 15px;
+    padding: 10px 35px;
+    background-color: #6c8989; /* Matched to Muted Teal */
+    color: white;
+    border: none;
+    border-radius: 20px; /* Matched to Home.css button radius */
+    font-size: 18px; /* Slightly adjusted to match standard buttons */
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.5s ease; /* Matched transition speed */
+}
+
+.proceed-btn:hover:not(:disabled) {
+    background-color: #588a58; /* Matched to Accent Green hover */
+}
+
+.proceed-btn:disabled {
+    background-color: rgb(198, 198, 198);
+    color: #ffffff;
+    cursor: not-allowed;
+}

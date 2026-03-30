@@ -1,0 +1,139 @@
+.buses-container{
+    flex: 1;
+    
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    background-color: rgb(245, 250, 245);
+}
+
+.filter-bar{
+    border: 1px dashed black;
+    border-radius: 35px;
+
+    box-shadow: 0px 0px 3px rgb(111, 166, 183);
+
+    width: 60%;
+    height: 10%;
+
+    align-self: center;
+
+    margin: 30px 0px;
+
+    padding: 10px 20px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: white;
+}
+
+.bus-list{
+
+    width: 60%;
+    height: auto;
+
+    align-self: center;
+
+    display: flex;
+    flex-direction: column;
+
+    list-style-type: none;
+}
+
+.bus-container{
+    width: 100%;
+    height: 150px;
+    
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+
+    margin: 10px 0px;
+
+    border-radius: 30px;
+    box-shadow: 0px 2px 5px rgb(111, 166, 183);
+
+    background-color: white;
+}
+
+.bus-details{
+    display: flex;
+    flex-direction: row;
+
+    border-bottom: 1px solid rgb(181, 181, 181);
+
+    padding: 20px 5px;
+}
+
+.bus-book{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+
+    height: 100%;
+
+    margin-top: 5px;
+}
+
+.book-btn{
+    font-size: 15px;
+    font-weight: bold;
+
+    padding: 10px 13px;
+
+    border-radius: 30px;
+    border: none;
+
+    background-color: hsl(120, 22%, 44%);
+    color: hsl(0, 0%, 100%);
+
+    cursor: pointer;
+
+    transition: background-color 0.3s ease;
+}
+
+.book-btn:hover{
+    background-color: hsl(120, 22%, 34%);
+}
+
+.original-fare{
+    text-decoration: line-through;
+    font-size: 16px;
+}
+
+.final-fare{
+    font-size: 18px;
+}
+
+.bus-timings > p{
+    font-size: 14px;
+    color: grey;
+}
+
+.bus-details > h3{
+    width: 450px;
+}
+
+.bus-timings{
+    width: 300px;
+    text-align: center;
+}
+
+.bus-pricing{
+    width: 300px;
+    text-align: end;
+}
+
+
+
+
+

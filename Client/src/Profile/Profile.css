@@ -1,0 +1,252 @@
+.profile-page{
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    
+    padding: 10px;
+}
+
+.profile-info{
+    border: 1px solid black;
+    
+    margin-top: 70px;
+
+    width: 60%;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    align-self: center;
+
+    padding: 0px 30px;
+}
+
+h1{
+    align-self: center;
+}
+
+.user-details{
+    /* border: 1px solid red; */
+
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.user-name, .user-age, .user-gender{
+    text-align: center;
+    margin: 20px;
+
+    color: grey;
+}
+
+.user-name > p, .user-age > p, .user-gender > p{
+    font-size: 13px;
+}
+
+.user-name > h3, .user-age > h3, .user-gender > h3{
+    font-size: 20px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  width: 100%; 
+  margin: 40px 0px; 
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1; 
+  border-bottom: 1px solid #d8d8d8; 
+}
+
+.divider-text {
+  padding: 0 20px; 
+  color: #5b7c99;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+  font-size: 20px;
+  font-weight: 300; 
+  letter-spacing: 1px; 
+}
+
+.user-contact{
+    /* border: 1px solid red; */
+
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.user-email, .user-phone{
+    text-align: center;
+    margin: 20px;
+
+    color: grey;
+}
+
+.user-email > p, .user-phone > p{
+    font-size: 13px;
+}
+
+.user-email > h3, .user-phone > h3{
+    font-size: 20px;
+}
+
+.profile-booking{
+    border: 1px solid black;
+    
+    margin-top: 70px;
+
+    width: 60%;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    align-self: center;
+
+    padding: 0px 30px;
+}
+
+.profile-booking > h2{
+    color: grey;
+
+    text-align: center;
+}
+
+.profile-container{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.edit-btn{
+    position: relative;
+
+    left: 875px;
+
+    width: 60px;
+    height: 40px;
+
+    background-color: hsl(194, 33%, 58%);
+
+    color: white;
+
+    border: none;
+    border-radius: 10px;
+
+    box-shadow: 0px 0px 3px rgb(198, 198, 198);
+
+    cursor: pointer;
+
+    transition: background-color 0.3s ease;
+
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.edit-btn:hover{
+    background-color: hsl(194, 33%, 48%);
+}
+
+.user-name > label, .user-age > label, .user-gender > label{
+    font-size: 13px;
+}
+
+.user-name > input, .user-age > input, .user-gender > input{
+    font-size: 20px;
+}
+
+.user-phone > label{
+    font-size: 13px;
+}
+
+.user-phone > input{
+    font-size: 20px;
+}
+
+input{
+    border: none;
+    border-bottom: 1px solid grey;
+    outline: none;
+
+    text-align: center;
+}
+
+input:active{
+    outline: none;
+    border: none;
+}
+
+.save-btn{
+    position: relative;
+
+    left: 875px;
+    top: -40px;
+
+    width: 60px;
+    height: 40px;
+
+    background-color: hsl(194, 33%, 58%);
+
+    color: white;
+
+    border: none;
+    border-radius: 10px;
+
+    box-shadow: 0px 0px 3px rgb(198, 198, 198);
+
+    cursor: pointer;
+
+    transition: background-color 0.3s ease;
+
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.save-btn:hover{
+    background-color: hsl(194, 33%, 48%);
+}
+
+.cancel-btn{
+    position: relative;
+
+    left: 775px;
+    top: 0px;
+
+    width: 80px;
+    height: 40px;
+
+    background-color: hsl(0, 0%, 78%);
+
+    color: white;
+
+    border: none;
+    border-radius: 10px;
+
+    box-shadow: 0px 0px 3px hsl(194, 33%, 58%);
+
+    cursor: pointer;
+
+    transition: background-color 0.3s ease;
+
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.cancel-btn:hover{
+    background-color: hsl(0, 0%, 68%);
+}
+
+#male-label, #female-label{
+    font-size: 20px;
+}

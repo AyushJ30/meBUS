@@ -1,0 +1,235 @@
+/* UserBookings.css */
+
+.user-bookings-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 2px 5px rgb(198, 198, 198);
+    border: 1px solid rgb(198, 198, 198);
+    overflow: hidden;
+    width: 100%;
+    max-width: 1100px;
+    margin: 20px auto;
+}
+
+.bookings-header {
+    padding: 25px 30px 0 30px;
+    border-bottom: 1px solid rgb(198, 198, 198);
+    background-color: #fcfcfc;
+}
+
+.bookings-header h2 {
+    color: #006938; /* Dark Green */
+    margin: 0 0 20px 0;
+    font-size: 24px;
+}
+
+.bookings-tabs {
+    display: flex;
+    gap: 30px;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 10px 0 15px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #6c8989; /* Muted Teal */
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+    color: #006938;
+}
+
+.tab-btn.active {
+    color: #006938;
+    border-bottom: 3px solid #006938;
+}
+
+.bookings-content {
+    padding: 0;
+}
+
+/* --- Table Styling --- */
+.table-responsive {
+    overflow-x: auto;
+    width: 100%;
+}
+
+.bookings-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.bookings-table th {
+    background-color: #f8f9fa;
+    color: #6c8989;
+    padding: 16px 20px;
+    font-weight: 600;
+    font-size: 14px;
+    border-bottom: 2px solid rgb(198, 198, 198);
+    white-space: nowrap;
+}
+
+.bookings-table td {
+    padding: 16px 20px;
+    border-bottom: 1px solid rgb(198, 198, 198);
+    color: #3e3e52;
+    font-size: 15px;
+    vertical-align: middle;
+}
+
+.bookings-table tr:last-child td {
+    border-bottom: none;
+}
+
+.bookings-table tr:hover {
+    background-color: rgba(111, 166, 183, 0.05); /* Very light teal hover */
+}
+
+/* --- Table Cell Details --- */
+.route-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.route-cities {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.city-name {
+    font-weight: bold;
+    color: #1a1a1a;
+}
+
+.route-arrow-icon {
+    font-size: 12px;
+    color: #6c8989;
+}
+
+.pnr-badge {
+    font-size: 12px;
+    color: #006938;
+    background-color: rgba(88, 138, 88, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+    width: max-content;
+    font-weight: bold;
+}
+
+.sub-text {
+    font-size: 13px;
+    color: #6c8989;
+}
+
+/* --- Status Badges --- */
+.status-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
+    min-width: 80px;
+}
+
+.status-badge.upcoming {
+    background-color: rgba(88, 138, 88, 0.15);
+    color: #006938;
+}
+
+.status-badge.completed {
+    background-color: #f0f0f0;
+    color: #6c8989;
+}
+
+.status-badge.cancelled {
+    background-color: #fdf2f2;
+    color: #d84e55; /* Keep standard red for critical cancellations */
+}
+
+/* --- Action Buttons --- */
+.action-cell {
+    display: flex;
+    gap: 10px;
+}
+
+.action-btn {
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.action-btn.download {
+    background-color: rgb(111, 166, 183); /* Light Teal */
+    color: white;
+}
+
+.action-btn.download:hover {
+    background-color: #6c8989;
+}
+
+.action-btn.cancel {
+    background-color: white;
+    color: #d84e55;
+    border: 1px solid #d84e55;
+}
+
+.action-btn.cancel:hover {
+    background-color: #fdf2f2;
+}
+
+/* --- Empty / Loading States --- */
+.empty-bookings-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.empty-icon {
+    font-size: 48px;
+    color: rgb(198, 198, 198);
+    margin-bottom: 15px;
+}
+
+.empty-bookings-state h3 {
+    color: #006938;
+    margin: 0 0 10px 0;
+}
+
+.empty-bookings-state p {
+    color: #6c8989;
+    margin: 0;
+}
+
+.loading-state {
+    text-align: center;
+    padding: 60px;
+    color: #6c8989;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.page-container{
+    flex: 1;
+    padding: 10px;
+}

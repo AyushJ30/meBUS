@@ -1,0 +1,191 @@
+/* Payment.css */
+
+.payment-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Matched Home.css */
+    max-width: 500px; /* Kept narrow for a focused checkout experience */
+    margin: 30px auto;
+    color: #3e3e52;
+}
+
+.payment-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.payment-header h3 {
+    font-size: 22px;
+    color: #006938; /* Matched Dark Green */
+    margin: 0 0 8px 0;
+}
+
+.payment-header p {
+    font-size: 14px;
+    color: #6c8989; /* Matched Muted Teal */
+    margin: 0;
+}
+
+.payment-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* --- Reusable Card Base --- */
+.card-box {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 2px 5px rgb(198, 198, 198); /* Matched Home.css shadow */
+    border: 1px solid rgb(198, 198, 198); /* Matched Home.css border */
+    padding: 24px;
+}
+
+.card-header {
+    margin-bottom: 16px;
+    border-bottom: 1px solid rgb(158, 158, 158); /* Matched Home.css border */
+    padding-bottom: 12px;
+}
+
+.card-header h3 {
+    margin: 0 0 4px 0;
+    font-size: 16px;
+    color: #006938; /* Matched Dark Green */
+    font-weight: 600;
+}
+
+.card-header.text-center {
+    text-align: center;
+}
+
+.card-header p {
+    margin: 0;
+    font-size: 13px;
+    color: #6c8989; /* Matched Muted Teal */
+}
+
+/* --- Fare Breakdown (Receipt Style) --- */
+.fare-breakdown {
+    display: flex;
+    flex-direction: column;
+}
+
+.receipt-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    font-size: 14px;
+    color: #4a4a4a;
+}
+
+.receipt-label {
+    color: #4a4a4a;
+}
+
+.receipt-value {
+    font-weight: 500;
+    color: #1a1a1a;
+}
+
+.total-row {
+    border-top: 2px dashed rgb(158, 158, 158); /* Matched border color */
+    margin-top: 10px;
+    padding-top: 16px;
+    font-size: 16px;
+}
+
+.total-row .receipt-label {
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.total-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #006938; /* Highlight total in Dark Green */
+}
+
+/* --- QR Code Section --- */
+.qr-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.qr-image-wrapper {
+    background-color: rgba(111, 166, 183, 0.1); /* Soft Light Teal */
+    border: 1px solid rgb(198, 198, 198);
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+
+.qr-image {
+    display: block;
+    width: 180px;
+    height: 180px;
+    border-radius: 4px;
+}
+
+.upi-details {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    background-color: #f8f9fa;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid rgb(158, 158, 158);
+}
+
+.upi-details span:first-child {
+    color: #6c8989;
+}
+ 
+.upi-id {
+    font-weight: 600;
+    color: #1a1a1a;
+    letter-spacing: 0.5px;
+}
+
+/* --- Action Button --- */
+.payment-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.proceed-btn {
+    padding: 14px 32px;
+    background-color: #6c8989; /* Matched to Muted Teal */
+    color: white;
+    border: none;
+    border-radius: 20px; /* Matched to Home.css button radius */
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    letter-spacing: 0.3px;
+    width: 100%;
+}
+
+.proceed-btn:hover:not(:disabled) {
+    background-color: #588a58; /* Matched to Accent Green hover */
+    box-shadow: 0 4px 12px rgba(88, 138, 88, 0.3); /* Subtle green glow */
+}
+
+.proceed-btn:disabled {
+    background-color: rgb(198, 198, 198);
+    color: #ffffff;
+    cursor: not-allowed;
+}
+
+/* Simple pulse animation for when payment is processing */
+.proceed-btn.processing {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { background-color: rgb(198, 198, 198); }
+    50% { background-color: rgb(158, 158, 158); }
+    100% { background-color: rgb(198, 198, 198); }
+}
