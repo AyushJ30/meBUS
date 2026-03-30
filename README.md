@@ -43,3 +43,17 @@ Follow these steps to set up the project locally.
    ```bash
    git clone [https://github.com/AyushJ30/meBus.git](https://github.com/AyushJ30/meBus.git)
    cd meBus
+bash```
+
+### Database Architecture**
+   The backend utilizes Sequelize to map complex relationships. Core models include:
+   * User, Booking, Passenger, Seat
+   * Bus, Day (Scheduling)
+   * Country, State, City, Point (Location Management)
+
+### Author
+   **Ayush Kumar Jha**
+   * GitHub: @AyushJ30
+
+### License
+   This project is licensed under the ISC License.
